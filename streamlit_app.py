@@ -1,15 +1,35 @@
 import streamlit as st
+import pandas as pd 
 
+# Konfigurasi halaman 
 st.set_page_config(page_title="Beranda - Vitamin MPASI", layout="centered")
 
-st.title("👶🍽️ Selamat Datang di Aplikasi Vitamin MPASI")
+# Fungsi ganti halaman
+def set_page(page_name):
+  st.session_state.page = page_name
 
-st.markdown("""
----
+# Inisialisasi halaman pertama
+if "page" not in st.session_state:
+  st.session_state.page = "beranda"
+
+# ===================== BERANDA =====================
+if st.session_state.page == "Beranda":
+  st.title("👶🍽️ Selamat Datang di Aplikasi Vitamin MPASI")
+  st.markdown("""
+  Aplikasi ini membantu Anda menhitung kadar vitamin pada mpasi untuk bayi berdasarkan berat (mg) bahan makanan dan umur bayi.
+  
+  ### Fitur:
+  - Masukkan umur
+  - Pilih bahan pangan 
+  - Menentukan berat (mg) bahan pangan
+  - Dapatkan tabel hasil kadar vitamin
+
+  ---
+  """)
 
 ## 🍼 Apa Itu Aplikasi Ini?
 
-Aplikasi ini membantu orang tua dan tenaga medis untuk:
+Aplikasi ini membantu orang tua untuk:
 - 🥕 Menghitung kandungan vitamin dari bahan MPASI
 - 👶 Menyesuaikan dengan kebutuhan vitamin berdasarkan usia bayi
 - 🍗 Merancang menu yang bergizi dan seimbang
